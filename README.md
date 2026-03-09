@@ -82,6 +82,7 @@ Use this order if your goal is to run the method quickly:
 Repository structure:
 
 - `DESCRIPTION`, `NAMESPACE`: R package metadata and exported functions.
+- `NEWS.md`: package version history and user-facing changes across releases.
 - `R/`: core implementation.
 - `R/neighbors.R`: neighborhood graph builders (`knn`, `radius`, `delaunay`).
 - `R/nep_cozi.R`: main NEP/COZI workflow (`nep_analysis`, `run_cozi`).
@@ -96,6 +97,7 @@ Repository structure:
 
 - For hands-on execution, start with `tutorial/coziR_tutorial.Rmd` and run it top to bottom.
 - For biological/statistical interpretation of outputs (for example conditional ratios and z-scores), use the associated manuscript as the primary reference.
+- For release-by-release package updates, see `NEWS.md`.
 
 ## Main API
 
