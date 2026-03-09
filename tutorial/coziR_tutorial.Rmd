@@ -1,0 +1,129 @@
+---
+title: "coziR Tutorial"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+This tutorial demonstrates how to use `coziR` for neighborhood preference analysis with the bundled simulated example data.
+
+## Loading the Data
+
+```{r load_data}
+devtools::load_all()
+library(ggplot2)
+
+# Use package tutorial source data (works when run from repo root or tutorial dir)
+data_path <- if (file.exists("tutorial_data/test_sim_data.csv")) {
+  "tutorial_data/test_sim_data.csv"
+} else {
+  "tutorial/tutorial_data/test_sim_data.csv"
+}
+sim_data <- read.csv(data_path)
+
+head(sim_data)
+str(sim_data)
+
+coords <- as.matrix(sim_data[, c("x", "y")])
+labels <- sim_data$ct
+```
+
+## Visualizing the Data
+
+```{r plot_data}
+ggplot(sim_data, aes(x = x, y = y, color = factor(ct))) +
+  geom_point(size = 1) +
+  labs(color = "Cell Type") +
+  theme_minimal()
+```
+
+## Building Neighborhood Graphs
+
+`coziR` supports three neighborhood definitions:
+
+1. k-nearest neighbors (`knn`)
+2. Radius-based (`radius`)
+3. Delaunay triangulation (`delaunay`)
+
+```{r knn_graph}
+knn_adj <- knn_graph(coords, n_neighbors = 6)
+knn_adj
+```
+
+## Running COZI Analysis (KNN)
+
+```{r run_cozi_knn}
+results_knn <- run_cozi(
+  coords = coords,
+  labels = labels,
+  nbh_def = "knn",
+  n_neighbors = 6,
+  n_permutations = 300,
+  random_state = 42
+)
+
+results_knn$cond_ratio
+results_knn$zscore
+```
+
+## Dotplot Visualization (KNN)
+
+Color encodes `zscore`; dot size encodes `con_cell_ratio`.
+
+```{r knn_dotplot}
+knn_dotplot <- cozi_dotplot(
+  results_knn,
+  title = "KNN neighborhood preference dotplot"
+)
+
+knn_dotplot
+```
+
+## Comparing Neighborhood Definitions
+
+```{r compare_methods}
+results_radius <- run_cozi(
+  coords = coords,
+  labels = labels,
+  nbh_def = "radius",
+  radius = 50,
+  n_permutations = 100,
+  random_state = 42
+)
+
+results_delaunay <- run_cozi(
+  coords = coords,
+  labels = labels,
+  nbh_def = "delaunay",
+  n_permutations = 100,
+  random_state = 42
+)
+
+results_knn$zscore
+results_radius$zscore
+results_delaunay$zscore
+```
+
+## Advanced Usage (under active development): Fixed Type
+
+Fix one cell type during permutations (use label name for clarity).
+
+```{r fixed_type}
+fixed_label <- as.character(sort(unique(labels))[1])
+
+results_fixed <- run_cozi(
+  coords = coords,
+  labels = labels,
+  nbh_def = "knn",
+  n_neighbors = 6,
+  n_permutations = 1000,
+  random_state = 42,
+  fixed_type = fixed_label
+)
+
+results_fixed$zscore
+```
