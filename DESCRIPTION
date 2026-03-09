@@ -1,0 +1,23 @@
+Package: coziR
+Type: Package
+Title: Conditional Neighborhood Preference Scores
+Version: 0.1.0
+Authors@R: c(
+    person("Chiara", "Schiller", email = "your.email@example.com", role = c("aut", "cre"))
+    )
+Description: Computes conditional neighborhood preference scores for cell-cell
+    interactions using k-nearest neighbors, radius-based, or Delaunay
+    neighborhoods. Includes neighborhood quantification, conditional
+    normalization, conditional cell ratios, and permutation-based z-scores.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports:
+    Matrix,
+    FNN,
+    methods,
+    stats
+Suggests:
+    ggplot2
