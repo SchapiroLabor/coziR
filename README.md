@@ -1,3 +1,5 @@
+<img src="coziR_logo.png" alt="coziR logo" align="right" width="220">
+
 # coziR
 
 `coziR` is an R implementation of the COZI neighborhood preference method, mirroring the same conceptual steps as [cozipy](https://github.com/SchapiroLabor/COZIpy), 
