@@ -96,7 +96,7 @@ Repository structure:
 ## Tutorial and interpretation
 
 - For hands-on execution, start with `tutorial/coziR_tutorial.Rmd` and run it top to bottom.
-- For biological/statistical interpretation of outputs (for example conditional ratios and z-scores), use the associated manuscript as the primary reference.
+- For biological/statistical interpretation of outputs (for example conditional ratios and z-scores), use the associated manuscript as the primary reference. We are happy to provide this package but ask the user to carefully read the manuscript to be aware of how to propoerly interpret the results.
 - For release-by-release package updates, see `NEWS.md`.
 
 ## Main API
