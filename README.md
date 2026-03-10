@@ -1,4 +1,4 @@
-# coziR - Conditional neighborhood preference analysis framework <img src="coziR_logo.png" align="right" height="120"/>
+# coziR - Conditional neighborhood preference analysis <img src="coziR_logo.png" align="right" height="120"/>
 
 `coziR` is an R implementation of the COZI neighborhood preference method, mirroring the same conceptual steps as [cozipy](https://github.com/SchapiroLabor/COZIpy), 
 introduced in [Schiller at al. bioRxiv 2025](https://doi.org/10.1101/2025.03.31.646289).
@@ -79,7 +79,13 @@ Use this order if your goal is to run the method quickly:
 2. Run the tutorial in `tutorial/coziR_tutorial.Rmd`
 3. Adapt the same calls in your own analysis script
 
-Repository structure:
+### Interpretation
+
+- For biological/statistical interpretation of outputs (for example conditional ratios and z-scores), use the associated manuscript as the primary reference. We are happy to provide this package but ask the user to carefully read the manuscript to be aware of how to properly interpret the results.
+- If you have large numbers of cells with variations between images, consider normalizing your z-score by the square root of the number of cells in that sample.
+- For release-by-release package updates, see `NEWS.md`.
+
+## Repository structure:
 
 - `DESCRIPTION`, `NAMESPACE`: R package metadata and exported functions.
 - `NEWS.md`: package version history and user-facing changes across releases.
@@ -92,12 +98,6 @@ Repository structure:
 - `tests/test-basic.R`: basic checks/examples for expected behavior.
 - `tutorial/coziR_tutorial.Rmd`: step-by-step runnable tutorial.
 - `tutorial/tutorial_data/test_sim_data.csv`: example input used by the tutorial.
-
-## Tutorial and interpretation
-
-- For hands-on execution, start with `tutorial/coziR_tutorial.Rmd` and run it top to bottom.
-- For biological/statistical interpretation of outputs (for example conditional ratios and z-scores), use the associated manuscript as the primary reference. We are happy to provide this package but ask the user to carefully read the manuscript to be aware of how to propoerly interpret the results.
-- For release-by-release package updates, see `NEWS.md`.
 
 ## Main API
 
