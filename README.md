@@ -1,4 +1,6 @@
-<img src="coziR_logo.png" alt="coziR logo" align="right" width="220">
+<p align="right">
+  <img src="coziR_logo.png" alt="coziR logo" width="200">
+</p>
 
 # coziR
 
