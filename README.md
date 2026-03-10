@@ -1,8 +1,4 @@
-<p align="right">
-  <img src="coziR_logo.png" alt="coziR logo" width="200">
-</p>
-
-# coziR
+# coziR - Conditional neighborhood preference analysis framework <img src="coziR_logo.png" align="right" height="120"/>
 
 `coziR` is an R implementation of the COZI neighborhood preference method, mirroring the same conceptual steps as [cozipy](https://github.com/SchapiroLabor/COZIpy), 
 introduced in [Schiller at al. bioRxiv 2025](https://doi.org/10.1101/2025.03.31.646289).
